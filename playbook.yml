@@ -7,7 +7,9 @@
      src: "/var/snap/jenkins/4865/workspace/myansiblewebapp/target/MavenAnsibleWebApp1.war"
      dest: "/opt/tomcat/webapps/MavenAnsibleWebApp.war"
      remote_src: no
-  - name: Restart Tomcat
-    systemd:
-     name: tomcat
-     state: restarted
+  - name: Restart Tomcat manually on Ubuntu
+    become: true
+    shell: |
+    /opt/tomcat/bin/shutdown.sh || true
+    sleep 5
+    /opt/tomcat/bin/startup.sh
