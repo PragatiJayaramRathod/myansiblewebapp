@@ -10,6 +10,5 @@
     - name: Restart Tomcat manually on Ubuntu
       shell: |
         /opt/tomcat/bin/shutdown.sh || true
-        sleep 5
         /opt/tomcat/bin/startup.sh
       become: true
